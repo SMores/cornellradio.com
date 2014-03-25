@@ -1,0 +1,78 @@
+@import "bootstrap";
+
+header {
+  margin: 0px 25px 25px 25px;
+  /*background-color: #cf2132;*/
+  background-image: image-url('HEADER_8.jpg');
+  background-size: 100%;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 10px;
+  height: 120px;
+  padding: 15px;
+  font-size: 300%;
+  #logo {
+    float: right;
+    margin-right: 10px;
+  }
+}
+
+body {
+  background-image: image-url('red-grunge-background-1080.jpg');
+}
+
+.navbar {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  border-top: thin white solid;
+  border-bottom: thin white solid;
+  border-radius: 10px;
+  .navbar-inner {
+    border-radius: 10px;
+  }
+}
+
+.box {
+  border: thin $grayDark solid;
+  box-shadow: 1px 1px 3px $grayDark;
+}
+
+.feedBox {
+  width: 60%;
+  background: white;
+  margin-bottom: 20px;
+}
+
+.sideBox {
+  float: right;
+  background: white;
+  width: 35%;
+  padding: 10px;
+}
+
+iframe {
+  border: none;
+  height: 60px;
+  border-top: black thin;
+  border-bottom: black thin;
+}
+
+.posts {
+  list-style: none;
+  margin: 10px 0 0 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .title {
+    font-size: 120%;
+  }
+  .content {
+    display: block;
+  }
+  .timestamp {
+    color: $grayLight;
+  }
+}
+

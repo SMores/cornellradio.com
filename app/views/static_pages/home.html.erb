@@ -1,0 +1,29 @@
+<% provide(:title, 'CornellRadio.com') %>
+<div class="box sideBox">
+  <h3>On Air</h3>
+  <h4>What's On Now</h4>
+  <script>
+    window.setInterval("reloadIFrame();", 30000);
+
+    function reloadIFrame() {
+      document.getElementById("iframe").src = document.getElementById('iframe').src;
+    }
+  </script>
+  <iframe id="iframe" src="http://www.live365.com/mini/playlist.html?station=afl:cornellradio&rows=1&hide=B|W&now_sep1=<br><br>&now_sep3=&css=http://www.cornellradio.com/styles/live365.css"></iframe>
+</div>
+<div class="box feedBox">
+  <div id="wrapper">
+    <div class="slider-wrapper theme-light">
+      <div id="slider" class="nivoSlider">
+        <%= image_tag("slide1.jpg", title: "Toy Story") %>
+        <%= image_tag("slide2.jpg", title: "Toy Story") %>
+        <%= image_tag("slide3.jpg", title: "Toy Story") %>
+        <%= image_tag("slide4.jpg", title: "Toy Story") %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="box feedBox">
+  <h2>New at CornellRadio.com</h2>
+  <%= render 'shared/mini_feed' %>
+</div>

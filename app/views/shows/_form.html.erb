@@ -1,0 +1,41 @@
+<%= form_for(@show) do |f| %>
+  <% if @show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@show.errors.count, "error") %> prohibited this show from being saved:</h2>
+
+      <ul>
+      <% @show.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :profilePic %><br>
+    <%= f.text_field :profilePic %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :fbPage %><br>
+    <%= f.text_field :fbPage %>
+  </div>
+  <div class="field">
+    <%= f.label :twPage %><br>
+    <%= f.text_field :twPage %>
+  </div>
+  <div class="field">
+    <%= f.label :extPage %><br>
+    <%= f.text_field :extPage %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

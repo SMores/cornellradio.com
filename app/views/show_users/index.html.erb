@@ -1,0 +1,29 @@
+<h1>Listing show_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Userid</th>
+      <th>Showid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @show_users.each do |show_user| %>
+      <tr>
+        <td><%= show_user.userID %></td>
+        <td><%= show_user.showID %></td>
+        <td><%= link_to 'Show', show_user %></td>
+        <td><%= link_to 'Edit', edit_show_user_path(show_user) %></td>
+        <td><%= link_to 'Destroy', show_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Show user', new_show_user_path %>
