@@ -1,34 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @show.title %>
-</p>
-
-<p>
-  <strong>Profilepic:</strong>
-  <%= @show.profilePic %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @show.description %>
-</p>
-
-<p>
-  <strong>Fbpage:</strong>
-  <%= @show.fbPage %>
-</p>
-
-<p>
-  <strong>Twpage:</strong>
-  <%= @show.twPage %>
-</p>
-
-<p>
-  <strong>Extpage:</strong>
-  <%= @show.extPage %>
-</p>
+<% provide :title, "#{@show.title} on CornellRadio.com" %>
+<div class="box sideBox">
+  <ol class="sideList">
+    <li><%= link_to "Posts from #{@show.title}", "/showposts/#{@show.id}" %></li>
+  </ol>
+</div>
+<div class="box feedBox">
+  <%= image_tag(@show.profile_pic, size: 52, style:'float:left;') %>
+  <h2><%= @show.title %></h2>
+  <p><%= @show.description %></p>
+</div>
 
 <%= link_to 'Edit', edit_show_path(@show) %> |
 <%= link_to 'Back', shows_path %>

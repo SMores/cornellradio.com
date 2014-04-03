@@ -1,7 +1,10 @@
 <li>
-  <span class="title"><%= post.title %> - <%= post.user.firstName %> <%= post.user.lastName %></span>
-  <span class="content"><%= post.blurb %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
-  </span>
+  <%= link_to(post) do %>
+    <span class="title"><%= post.title %> - <%= post.user.first_name %> <%= post.user.last_name %></span>
+    <span class="content"><%= post.blurb %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(post.created_at) %> ago.
+    </span>
+  <% end %>
 </li>
+</a>

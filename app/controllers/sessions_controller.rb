@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_back_or root_url
     else
       flash.now[:error] = 'Invalid email/password combination'
-      redirect_to new_url
+      redirect_to '/admin'
     end
   end
 

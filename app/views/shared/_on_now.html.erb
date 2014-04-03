@@ -1,0 +1,10 @@
+<h3>On Air</h3>
+<h4>What's On Now</h4>
+<script>
+  window.setInterval("reloadIFrame();", 30000);
+
+  function reloadIFrame() {
+    document.getElementById("iframe").src = document.getElementById('iframe').src;
+  }
+</script>
+<iframe id="iframe" src="http://www.live365.com/mini/playlist.html?station=afl:cornellradio&rows=1&hide=B|W&now_sep1=<br><br>&now_sep3=&css=http://www.cornellradio.com/styles/live365.css"></iframe>

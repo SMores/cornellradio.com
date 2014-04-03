@@ -1,0 +1,18 @@
+<% @show = Show.find(params[:id]) %>
+<% provide :title, "Posts from #{@show.title}" %>
+<% provide :feed_type, "show" %>
+<div class="box sideBox">
+  <%= render 'shared/on_now' %>
+  <ol class="sideList">
+    <li><%= link_to "#{@show.title}'s Page", @show %></li>
+    <% @show.users.each do |jock| %>
+      <% if jock != @show %>
+        <li><%= link_to "#{jock.first_name} #{jock.last_name}", jock %></li>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
+<div class="box feedBox">
+  <h2><%= "Posts from #{@show.title}" %></h2>
+  <%= render 'shared/selective_feed' %>
+</div>

@@ -13,8 +13,9 @@ Supports Thumbs: true
     padding: 10px;
 }
 .theme-light .nivoSlider {
+  height: 216px;
 	position:relative;
-	background:#fff image-url('loading.gif') no-repeat 50% 50%;
+	background:image-url('loading.gif') no-repeat 50% 50%;
     margin-bottom:10px;
     overflow: visible;
 }

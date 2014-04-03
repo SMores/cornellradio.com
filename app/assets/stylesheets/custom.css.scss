@@ -1,20 +1,52 @@
 @import "bootstrap";
 
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
 header {
-  margin: 0px 25px 25px 25px;
+  margin-bottom: 25px;
   /*background-color: #cf2132;*/
   background-image: image-url('HEADER_8.jpg');
   background-size: 100%;
   border-style: solid;
   border-width: thin;
   border-radius: 10px;
-  height: 120px;
+  height: 144px;
   padding: 15px;
   font-size: 300%;
   #logo {
     float: right;
     margin-right: 10px;
   }
+}
+
+.options {
+  background-color: black;
+  border: thin white solid;
+  border-right: none;
+  position: fixed;
+  top: 10px;
+  right: 0;
+  font-size: small;
+  color: white;
+  padding: 10px;
+  padding-right: 20px;
+  a {
+    color: white;
+  }
+  box-shadow: 1px 1px 3px $grayDark;
+  z-index: 10;
+}
+
+.container {
+  // width: 890px;
 }
 
 body {
@@ -25,11 +57,15 @@ body {
   width: 90%;
   margin-right: auto;
   margin-left: auto;
-  border-top: thin white solid;
-  border-bottom: thin white solid;
+  border: thin lighten($grayLight, 20%) solid;
+  // border-top: thin white solid;
+  // border-bottom: thin white solid;
   border-radius: 10px;
   .navbar-inner {
     border-radius: 10px;
+  }
+  a {
+    font-weight: normal;
   }
 }
 
@@ -39,9 +75,13 @@ body {
 }
 
 .feedBox {
-  width: 60%;
+  width: 63%;
   background: white;
   margin-bottom: 20px;
+  padding: 10px;
+  h3 {
+    color: $gray;
+  }
 }
 
 .sideBox {
@@ -49,6 +89,10 @@ body {
   background: white;
   width: 35%;
   padding: 10px;
+}
+
+.sideList {
+  list-style: none;
 }
 
 iframe {
@@ -64,6 +108,9 @@ iframe {
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
+    &:hover {
+      background-color: $errorBackground;
+    }
   }
   .title {
     font-size: 120%;
@@ -73,6 +120,10 @@ iframe {
   }
   .timestamp {
     color: $grayLight;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }
 

@@ -16,16 +16,16 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :firstName %><br>
-    <%= f.text_field :firstName %>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :lastName %><br>
-    <%= f.text_field :lastName %>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :profilePic %><br>
-    <%= f.text_field :profilePic %>
+    <%= f.label :profile_pic %><br>
+    <%= f.text_field :profile_pic %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
@@ -34,6 +34,14 @@
   <div class="field">
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br>
+    <%= f.select(:level, [0,1,2,3,4]) %>
   </div>
   <div class="actions">
     <%= f.submit %>

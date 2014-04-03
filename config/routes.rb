@@ -1,19 +1,14 @@
 CornellRadio::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
-
   resources :page_contents, only: [:update, :edit]
-
-  resources :show_users, only: [:create, :destroy]
-
+  resources :show_users, only: [:new, :create, :destroy]
   resources :shows
-
   resources :podcasts
-
   resources :posts
-
   resources :users
 
   root 'static_pages#home'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/schedule', to: 'static_pages#schedule', via: 'get'
   match '/shows', to: 'static_pages#shows', via: 'get'
@@ -24,6 +19,9 @@ CornellRadio::Application.routes.draw do
   match '/get_involved', to: 'static_pages#get_involved', via: 'get'
   match '/sports', to: 'static_pages#sports', via: 'get'
   match '/connect', to: 'static_pages#connnect', via: 'get'
+  match '/userposts/:id', to: 'static_pages#userposts', via: 'get'
+  match '/showposts/:id', to: 'static_pages#showposts', via: 'get'
+  match '/admin', to: 'sessions#new', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

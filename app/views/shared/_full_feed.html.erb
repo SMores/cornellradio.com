@@ -1,0 +1,6 @@
+<% if Post.all.any? %>
+  <h3>Posts</h3>
+  <ol class="posts">
+    <%= render @posts.take(20) %>
+  </ol>
+<% end %>

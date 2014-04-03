@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: shows
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  profile_pic :string(255)
+#  description :string(255)
+#  fb_page     :string(255)
+#  tw_page     :string(255)
+#  ext_page    :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

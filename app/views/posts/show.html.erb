@@ -1,29 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Userid:</strong>
-  <%= @post.userID %>
-</p>
-
-<p>
-  <strong>Showid:</strong>
-  <%= @post.showID %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Blurb:</strong>
-  <%= @post.blurb %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
+<% provide :title, @post.title %>
+<div class="box sideBox">
+  <ol class="sideList">
+    <li><%= link_to "View all posts", posts_path %></li>
+    <li><%= link_to "View other posts by #{@post.user.first_name}", "/userposts/#{@post.user.id}" %></li>
+    <% if @post.show %>
+      <li><%= link_to "View other posts from #{@post.show.title}", "/showposts/#{@post.show.id}" %></li>
+    <% end %>
+  </ol>
+</div>
+<div class="box feedBox">
+  <h2><%= @post.title %></h2>
+  <h3>by <%= link_to @post.user.first_name, @post.user %></h3>
+  <% if @post.show %>
+    <h4>from <%= link_to @post.show.title, @post.show %></h4>
+  <% end %>
+  <p><%= @post.content %></p>
+</div>
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321184654) do
+ActiveRecord::Schema.define(version: 20140330055522) do
 
   create_table "page_contents", force: true do |t|
     t.string   "title"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20140321184654) do
   end
 
   create_table "podcasts", force: true do |t|
-    t.integer  "userID"
-    t.integer  "showID"
+    t.integer  "user_id"
+    t.integer  "show_id"
     t.string   "title"
     t.string   "audio"
     t.string   "description"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140321184654) do
     t.datetime "updated_at"
   end
 
-  add_index "podcasts", ["userID", "showID", "created_at"], name: "index_podcasts_on_userID_and_showID_and_created_at"
+  add_index "podcasts", ["user_id", "show_id", "created_at"], name: "index_podcasts_on_user_id_and_show_id_and_created_at"
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 20140321184654) do
 
   create_table "shows", force: true do |t|
     t.string   "title"
-    t.string   "profilePic"
+    t.string   "profile_pic"
     t.string   "description"
-    t.string   "fbPage"
-    t.string   "twPage"
-    t.string   "extPage"
+    t.string   "fb_page"
+    t.string   "tw_page"
+    t.string   "ext_page"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,15 +73,16 @@ ActiveRecord::Schema.define(version: 20140321184654) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "firstName"
-    t.string   "lastName"
-    t.string   "profilePic"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "profile_pic"
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "level"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.string   "bio"
   end
 
   add_index "users", ["level"], name: "index_users_on_level"

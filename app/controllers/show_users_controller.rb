@@ -14,7 +14,7 @@ class ShowUsersController < ApplicationController
 
   # GET /show_users/new
   def new
-    @show_user = ShowUser.new
+    @show_user = ShowUser.new()
   end
 
   # GET /show_users/1/edit
@@ -69,6 +69,6 @@ class ShowUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_user_params
-      params.require(:show_user).permit(:userID, :showID)
+      params.require(:show_user).permit(:user_id, :show_id)
     end
 end

@@ -1,0 +1,6 @@
+<% @type = yield(:feed_type) %>
+<ol class="posts">
+  <% Post.where("#{@type}_id = '#{params[:id]}'").each do |post| %>
+    <%= render post %>
+  <% end %>
+</ol>

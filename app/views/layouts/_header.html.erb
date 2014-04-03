@@ -1,3 +1,17 @@
+<% if signed_in? %>
+  <span class="options">
+    <ol class="sideList">
+      <li><%= link_to "Your page", current_user %></li>
+      <% current_user.shows.each do |show| %>
+        <li><%= link_to show.title, show %></li>
+      <% end %>
+      <% #if current_user.level < 2 %>
+        <li><%= link_to "Add new user", new_user_path %></li>
+      <% #end %>
+      <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+    </ol>
+  </span>
+<% end %>
 <div>
   <span id="listen">
     <a id="play"><%= image_tag("listenlive.png", width: "250") %></a>
