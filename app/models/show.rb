@@ -17,6 +17,7 @@ class Show < ActiveRecord::Base
   has_many :show_users, foreign_key: "show_id", dependent: :destroy
   has_many :personalities, through: :show_users, source: :user
   has_many :users, through: :show_users
+  accepts_nested_attributes_for :show_users
   validates :title, presence: true
   validates :description, presence: true
   default_scope -> { order('shows.title ASC') }

@@ -5,9 +5,10 @@
       <% current_user.shows.each do |show| %>
         <li><%= link_to show.title, show %></li>
       <% end %>
-      <% #if current_user.level < 2 %>
+      <% if current_user.level.to_i < 2 %>
         <li><%= link_to "Add new user", new_user_path %></li>
-      <% #end %>
+        <li><%= link_to "Add new show", new_show_path %></li>
+      <% end %>
       <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
     </ol>
   </span>

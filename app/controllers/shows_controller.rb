@@ -1,5 +1,6 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
+  before_action :correct_access, only: [:destroy, :create, :new]
 
   # GET /shows
   # GET /shows.json
@@ -28,6 +29,11 @@ class ShowsController < ApplicationController
 
     respond_to do |format|
       if @show.save
+        @saved_show = Show.find_by(title: show_params[:title])
+        params[:show_user].each_value do |user_id|
+          puts "UserID is #{user_id} and ShowID is #{@saved_show.id}"
+          ShowUser.new(user_id: user_id, show_id: @saved_show.id).save
+        end
         format.html { redirect_to @show, notice: 'Show was successfully created.' }
         format.json { render action: 'show', status: :created, location: @show }
       else
@@ -65,6 +71,10 @@ class ShowsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_show
       @show = Show.find(params[:id])
+    end
+
+    def correct_access
+      redirect_to(root_url) unless current_user.level.to_i < 2
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

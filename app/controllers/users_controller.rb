@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :signed_in_user
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_access, only: [:new, :create, :destroy]
   before_action :correct_user, only: [:edit, :update]
 
   # GET /users
@@ -63,10 +64,18 @@ class UsersController < ApplicationController
   end
 
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user?(@user) || current_user.level.to_i < 2
+    end
+
+    def correct_access
+      redirect_to(root_url) unless current_user.level.to_i < 2
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

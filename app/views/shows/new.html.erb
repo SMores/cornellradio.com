@@ -1,5 +1,37 @@
-<h1>New show</h1>
+<% provide :title, "Add new show" %>
+<div class="box formBox">
+  <h1>New show</h1>
+  <%= form_for(@show) do |f| %>
 
-<%= render 'form' %>
+    <%= render '/shared/error_messages', object: f.object %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <div><strong>Links to:</strong></div>
+      <%= f.label :fb_page, 'Facebook' %>
+      <%= f.text_field :fb_page %>
+
+      <%= f.label :tw_page, 'Twitter' %>
+      <%= f.text_field :tw_page %>
+
+      <%= f.label :ext_page, 'External Site' %>
+      <%= f.text_field :ext_page %>
+    </div>
+    <div>
+      <% (1..8).each do |d| %>
+
+        <%= label :show_user, "DJ #{d}" %>
+        <%= select :show_user, "user_id#{d}", User.all.collect { |p| [ "#{p.first_name} #{p.last_name}", p.id]}, { include_blank: true } %>
+
+      <% end %>
+    </div>
+
+    <%= f.submit "Create new show", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 <%= link_to 'Back', shows_path %>
