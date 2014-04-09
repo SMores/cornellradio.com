@@ -1,0 +1,42 @@
+<% @id = podcast.id %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var myCirclePlayer = new CirclePlayer("#jquery_jplayer_<%= @id %>",
+      {
+          mp3: "<%= "/audios/#{podcast.audio}" %>"
+      }, {
+          cssSelectorAncestor: "#cp_container_<%= @id %>",
+          swfPath: "http://www.jplayer.org/latest/js/Jplayer.swf",
+          wmode: "window",
+          kepEnabled: true,
+          supplied: "mp3",
+          solution: "html, flash"
+      }
+    );
+  });
+</script>
+<li style="height:120px;">
+  <div id="jquery_jplayer_<%= @id %>" class="cp-jplayer"></div>
+  <div id="cp_container_<%= @id %>" class="cp-container">
+      <div class="cp-buffer-holder">
+          <div class="cp-buffer-1"></div>
+          <div class="cp-buffer-2"></div>
+      </div>
+      <div class="cp-progress-holder">
+          <div class="cp-progress-1"></div>
+          <div class="cp-progress-2"></div>
+      </div>
+      <div class="cp-circle-control"></div>
+      <ul class="cp-controls">
+          <li><a href="#" class="cp-play" tabindex="1">play</a></li>
+          <li><a href="#" class="cp-pause" style="display:none;" tabindex="1">pause</a></li>
+      </ul>
+  </div>
+  <%= link_to(podcast) do %>
+    <span class="title"><%= podcast.title %> - <%= podcast.user.first_name %> <%= podcast.user.last_name %></span>
+    <span class="content"><%= podcast.description[0,250] %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(podcast.created_at) %> ago.
+    </span>
+  <% end %>
+</li>

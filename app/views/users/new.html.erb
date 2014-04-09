@@ -17,14 +17,16 @@
     <%= f.label :bio %>
     <%= f.text_area :bio %>
 
-    <%= f.label :level %>
-    <%= f.select :level, [["Admin", 0], ["Manager", 1], ["DJ", 2]] %>
+    <% if current_user.level.to_i == 0 %>
+      <%= f.label :level %>
+      <%= f.select :level, [["Admin", 0], ["Manager", 1], ["DJ", 2]] %>
+    <% else %>
+      <%= f.hidden_field :level, value: 2 %>
+    <% end %>
 
     <%= f.hidden_field :password, value: "CRrocks123" %>
     <%= f.hidden_field :password_confirmation, value: "CRrocks123" %>
-
+    <br>
     <%= f.submit "Create new user", class: "btn btn-primary" %>
   <% end %>
 </div>
-
-<%= link_to 'Back', users_path %>

@@ -1,10 +1,10 @@
 <% provide :title, "Add new show" %>
-<div class="box formBox">
+<div class="box formBox" style="height:600px;">
   <h1>New show</h1>
   <%= form_for(@show) do |f| %>
 
     <%= render '/shared/error_messages', object: f.object %>
-    <div>
+    <div class="col1">
       <%= f.label :title %>
       <%= f.text_field :title %>
 
@@ -20,8 +20,18 @@
 
       <%= f.label :ext_page, 'External Site' %>
       <%= f.text_field :ext_page %>
+
+      <%= f.label :start_time %>
+      <%= f.time_field :start_time %>
+      <br>
+      <%= f.select :start_day, [['Monday', 1], ['Tuesday', 2], ['Wednesday', 3], ['Thursday', 4], ['Friday', 5], ['Saturday', 6], ['Sunday', 7]] %>
+
+      <%= f.label :end_time %>
+      <%= f.time_field :end_time %>
+      <br>
+      <%= f.submit "Create new show", class: "btn btn-primary" %>
     </div>
-    <div>
+    <div class="col2">
       <% (1..8).each do |d| %>
 
         <%= label :show_user, "DJ #{d}" %>
@@ -30,8 +40,5 @@
       <% end %>
     </div>
 
-    <%= f.submit "Create new show", class: "btn btn-primary" %>
   <% end %>
 </div>
-
-<%= link_to 'Back', shows_path %>

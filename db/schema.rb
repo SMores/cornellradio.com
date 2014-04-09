@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330055522) do
+ActiveRecord::Schema.define(version: 20140405233637) do
 
   create_table "page_contents", force: true do |t|
     t.string   "title"
@@ -67,6 +67,10 @@ ActiveRecord::Schema.define(version: 20140330055522) do
     t.string   "ext_page"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "start_day"
+    t.string   "end_day"
   end
 
   add_index "shows", ["title"], name: "index_shows_on_title"

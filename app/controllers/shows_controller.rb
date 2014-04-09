@@ -1,6 +1,7 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
-  before_action :correct_access, only: [:destroy, :create, :new]
+  before_action :correct_access, only: [:destroy, :create, :new, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   # GET /shows
   # GET /shows.json
@@ -46,14 +47,18 @@ class ShowsController < ApplicationController
   # PATCH/PUT /shows/1
   # PATCH/PUT /shows/1.json
   def update
-    respond_to do |format|
-      if @show.update(show_params)
-        format.html { redirect_to @show, notice: 'Show was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @show.errors, status: :unprocessable_entity }
-      end
+    update_params = show_params
+    if update_params[:upload]
+      image_name = "show#{@user.id}"+File.extname(update_params[:upload].original_filename)
+      save_file(update_params[:upload], image_name)
+      update_params[:profile_pic] = "uploaded/#{image_name}"
+    end
+    update_params.delete(:upload)
+    if @show.update(update_params)
+      flash[:success] = "Show updated"
+      redirect_to @show
+    else
+      render 'edit'
     end
   end
 
@@ -77,8 +82,12 @@ class ShowsController < ApplicationController
       redirect_to(root_url) unless current_user.level.to_i < 2
     end
 
+    def correct_user
+      redirect_to(root_url) unless (current_user.level.to_i < 2 || current_user.shows.include?(@show))
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
-      params.require(:show).permit(:title, :profile_pic, :description, :fbPage, :twPage, :extPage)
+      params.require(:show).permit(:title, :profile_pic, :description, :fb_page, :tw_page, :ext_page, :start_time, :start_day, :end_time, :end_day, :upload)
     end
 end

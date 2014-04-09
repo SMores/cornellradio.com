@@ -1,6 +1,43 @@
-<h1>Editing show</h1>
+<% provide :title, "#{@show.title} on CornellRadio.com" %>
+<div class="box sideBox">
+  <%= render 'shared/on_now' %>
+  <ol class="sideList">
+    <li><%= link_to "Posts from #{@show.title}", "/showposts/#{@show.id}" %></li>
+    <li>DJs:</li>
+    <ul>
+    <% @show.users.each do |jock| %>
+      <li><%= link_to "#{jock.first_name} #{jock.last_name}'s Page", jock %></li>
+    <% end %>
+    </ul>
+  </ol>
+</div>
+<div class="box feedBox">
+  <%= form_for @show do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
 
-<%= render 'form' %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
 
-<%= link_to 'Show', @show %> |
-<%= link_to 'Back', shows_path %>
+    <div><strong>Links to:</strong></div>
+    <%= f.label :fb_page, 'Facebook' %>
+    <%= f.text_field :fb_page %>
+
+    <%= f.label :tw_page, 'Twitter' %>
+    <%= f.text_field :tw_page %>
+
+    <%= f.label :ext_page, 'External Site' %>
+    <%= f.text_field :ext_page %>
+
+    <%= f.label :start_time %>
+    <%= f.time_field :start_time %>
+    <br>
+    <%= f.select :start_day, [['Monday', 1], ['Tuesday', 2], ['Wednesday', 3], ['Thursday', 4], ['Friday', 5], ['Saturday', 6], ['Sunday', 7]] %>
+
+    <%= f.label :end_time %>
+    <%= f.time_field :end_time %>
+    <br>
+    <%= f.submit "Update Show", class: "btn btn-primary" %>
+  <% end %>
+</div>
+

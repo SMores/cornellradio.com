@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   end
 
   def schedule
+    # render layout: 'bare'
   end
 
   def shows
@@ -17,6 +18,8 @@ class StaticPagesController < ApplicationController
   end
 
   def media
+    @posts = Post.all(order: :created_at, limit: 10)
+    @podcasts = Podcast.all(order: :created_at, limit: 10)
   end
 
   def win
@@ -29,6 +32,7 @@ class StaticPagesController < ApplicationController
   end
 
   def sports
+    redirect_to 'http://www.bigredsportsnetwork.org/'
   end
 
   def connect

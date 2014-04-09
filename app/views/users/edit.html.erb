@@ -1,6 +1,42 @@
-<h1>Editing user</h1>
+<div class="box sideBox">
+  <%= render 'shared/on_now' %>
+  <ol class="sideList">
+    <li><%= link_to "#{@user.first_name}'s Posts", "/userposts/#{@user.id}" %></li>
+    <% if @user.shows.any? %>
+      <li><strong>Shows &amp; Co-hosts:</strong></li>
+      <% @user.shows.each do |show| %>
+        <li><%= link_to show.title, show %></li>
+        <ul>
+          <% show.users.each do |jock| %>
+            <% if jock != @user %>
+              <li><%= link_to "#{jock.first_name} #{jock.last_name}", jock %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
+<div class="box feedBox">
+  <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+  <%= form_for @user do |f| %>
+    <%= render '/shared/error_messages', object: f.object %>
 
-<%= render 'form' %>
+    <%= f.label :upload, "Upload Profile Picture" %>
+    <%= f.file_field :upload %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation%>
+    <br>
+    <%= f.submit "Update Profile", class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to @user do %>
+    <button class="btn">Cancel</button>
+  <% end %>
+</div>

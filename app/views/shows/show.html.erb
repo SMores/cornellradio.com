@@ -1,14 +1,50 @@
 <% provide :title, "#{@show.title} on CornellRadio.com" %>
 <div class="box sideBox">
+  <%= render 'shared/on_now' %>
   <ol class="sideList">
     <li><%= link_to "Posts from #{@show.title}", "/showposts/#{@show.id}" %></li>
+    <li>DJs:</li>
+    <ul>
+    <% @show.users.each do |jock| %>
+      <li><%= link_to "#{jock.first_name} #{jock.last_name}'s Page", jock %></li>
+    <% end %>
+    </ul>
   </ol>
 </div>
 <div class="box feedBox">
-  <%= image_tag(@show.profile_pic, size: 52, style:'float:left;') %>
-  <h2><%= @show.title %></h2>
+  <% if @show.profile_pic %>
+    <%= image_tag "/#{@show.profile_pic}", width: 100, style: "float:left; margin-right:10px;" %>
+  <% end %>
+  <span>
+    <h2><%= @show.title %></h2>
+    <% if @user == current_user || current_user.level.to_i < 2 %>
+      <h3><%= link_to "edit", edit_show_path(@show) %>
+        <% if current_user.level.to_i == 0 %>
+            | <%= link_to "delete", @show, method: :delete, data: { confirm: "You sure?" }, title: @show.title %></h3>
+        <% end %>
+    <% end %>
+    <p>
+      <% jockList = '' %>
+      <% @show.users.each do |jock| %>
+        <% jockList << jock.first_name+' '+jock.last_name+', ' %>
+      <% end %>
+      <%= jockList[0,jockList.length-2] %>
+    </p>
+  </span>
   <p><%= @show.description %></p>
+  <%= render 'shared/mini_feed' %>
+  <% if !@show.fb_page.blank? %>
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="fb-like" data-href="<%= @show.fb_page %>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+  <% end %>
 </div>
 
-<%= link_to 'Edit', edit_show_path(@show) %> |
-<%= link_to 'Back', shows_path %>

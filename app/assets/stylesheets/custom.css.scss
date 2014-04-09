@@ -38,11 +38,15 @@ header {
   color: white;
   padding: 10px;
   padding-right: 20px;
+  box-shadow: 1px 1px 3px $grayDark;
+  z-index: 10;
   a {
     color: white;
   }
-  box-shadow: 1px 1px 3px $grayDark;
-  z-index: 10;
+  ol {
+    padding: 0;
+    list-style: none;
+  }
 }
 
 .container {
@@ -104,7 +108,15 @@ body {
 }
 
 .sideList {
+  padding: 0;
+  border-top: 1px solid $grayLight;
+  padding-top: 10px;
   list-style: none;
+}
+
+textarea {
+  width: 400px;
+  height: 150px;
 }
 
 iframe {
@@ -114,9 +126,15 @@ iframe {
   border-bottom: black thin;
 }
 
+ol {
+  padding: 20px;
+}
+
 .posts {
   list-style: none;
   margin: 10px 0 0 0;
+  max-height: 1000px;
+  overflow: scroll;
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
@@ -139,3 +157,52 @@ iframe {
   }
 }
 
+.col1 {
+  float:left;
+}
+
+.col2 {
+  float: left;
+  margin-left: 40px;
+}
+
+.index {
+  list-style: none;
+  margin: 10px 0 0 0;
+  li {
+    padding: 10px 20px;
+    border-top: 1px solid #e8e8e8;
+    &:hover {
+      background-color: $errorBackground;
+    }
+  }
+  .pic {
+    width: 52px;
+  }
+  .title {
+    font-size: 120%;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+table {
+  background-color: white;
+  padding: 10px;
+  .show {
+    color: white;
+    text-align: center;
+    background-color: $red;
+    a:hover {
+      color: white !important;
+    }
+  }
+  th {
+    border: black thin solid;
+  }
+  td {
+    border: black thin solid;
+  }
+}

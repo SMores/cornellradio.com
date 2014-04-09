@@ -1,6 +1,6 @@
-<% if Post.all.any? %>
-  <h3>Posts</h3>
+<% if Post.all.any? || Podcast.all.any? %>
+  <h1><%= link_to "Posts", posts_path %> &amp; <%= link_to "Podcasts", podcasts_path %></h1>
   <ol class="posts">
-    <%= render @posts.take(20) %>
+    <%= render @posts.zip(@podcasts).flatten.compact %>
   </ol>
 <% end %>

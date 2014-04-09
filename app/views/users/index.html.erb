@@ -1,35 +1,18 @@
-<h1>Listing users</h1>
+<% provide :title, "Personalities" %>
+<div class="box sideBox">
+  <%= render 'shared/on_now' %>
+</div>
+<div class="box feedBox" style="height:<%= (@users.count/2+1)*72 + 160 %>px">
+  <h1>CornellRadio.com Personalities</h1>
+  <div class="col1">
+    <ol class="index">
+      <%= render @users.all(limit: @users.count/2, order: :first_name) %>
+    </ol>
+  </div>
+  <div class="col2">
+    <ol class="index">
+      <%= render @users.all(offset: @users.count/2, order: :first_name) %>
+    </ol>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Profilepic</th>
-      <th>Password</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.profile_pic %></td>
-        <td><%= user.password %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>

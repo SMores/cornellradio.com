@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: { case_sensative: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, if: :password_validation_required?
 
   default_scope order: 'users.first_name ASC'
 
@@ -36,6 +36,15 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def User.save(upload, name)
+    path = Rails.root.join('public', 'uploaded', name)
+    File.open(path, "wb") { |f| f.write(upload.read) }
+  end
+
+  def password_validation_required?
+    self.password_digest.blank? || !@password.blank?
   end
 
   private

@@ -1,7 +1,8 @@
 <% if signed_in? %>
   <span class="options">
-    <ol class="sideList">
+    <ol>
       <li><%= link_to "Your page", current_user %></li>
+      <li><%= link_to "Add post", new_post_path %></li>
       <% current_user.shows.each do |show| %>
         <li><%= link_to show.title, show %></li>
       <% end %>

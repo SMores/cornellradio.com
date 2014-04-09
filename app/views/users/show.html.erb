@@ -2,23 +2,33 @@
   <%= render 'shared/on_now' %>
   <ol class="sideList">
     <li><%= link_to "#{@user.first_name}'s Posts", "/userposts/#{@user.id}" %></li>
-    <% @user.shows.each do |show| %>
-      <li><%= link_to show.title, show %></li>
-      <ul>
-        <% show.users.each do |jock| %>
-          <% if jock != @user %>
-            <li><%= link_to "#{jock.first_name} #{jock.last_name}", jock %></li>
+    <% if @user.shows.any? %>
+      <li><strong>Shows &amp; Co-hosts:</strong></li>
+      <% @user.shows.each do |show| %>
+        <li><%= link_to show.title, show %></li>
+        <ul>
+          <% show.users.each do |jock| %>
+            <% if jock != @user %>
+              <li><%= link_to "#{jock.first_name} #{jock.last_name}", jock %></li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
     <% end %>
   </ol>
 </div>
 <div class="box feedBox">
-  <%= image_tag(@user.profile_pic, size: 52, style: 'float:left;') %>
+  <% if @user.profile_pic %>
+    <%= image_tag("/#{@user.profile_pic}", width: 100, style: 'float:left;margin-right:10px;') %>
+  <% end %>
   <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+  <% if @user == current_user || current_user.level.to_i < 2 %>
+    <h3><%= link_to "edit", edit_user_path(@user) %>
+      <% if current_user.level.to_i == 0 && current_user != @user %>
+       | <%= link_to "delete", @user, method: :delete, data: { confirm: "You sure?" }, title: "#{@user.first_name} #{@user.last_name}" %>
+    <% end %>
+    </h3>
+  <% end %>
   <p><%= @user.bio %></p>
+  <%= render 'shared/mini_feed' %>
 </div>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
