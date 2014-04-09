@@ -50,7 +50,7 @@ class ShowsController < ApplicationController
     update_params = show_params
     if update_params[:upload]
       image_name = "show#{@user.id}"+File.extname(update_params[:upload].original_filename)
-      save_file(update_params[:upload], image_name)
+      save_image(update_params[:upload], image_name)
       update_params[:profile_pic] = "uploaded/#{image_name}"
     end
     update_params.delete(:upload)

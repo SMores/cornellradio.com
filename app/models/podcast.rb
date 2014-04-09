@@ -18,5 +18,5 @@ class Podcast < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
   validates :audio, presence: true, length: { maximum: 250 }
-  validates :description, presence: true
+  validates :description, presence: true, length: { maximum: 250 }
 end

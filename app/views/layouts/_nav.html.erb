@@ -16,7 +16,17 @@
               <li><%= link_to "Personalities", users_path %></li>
             </ul>
           </li>
-          <li><%= link_to "The Feed", media_path %></li>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              The Feeds <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Everything", media_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Just Posts", posts_path %></li>
+              <li><%= link_to "Just Podcasts", podcasts_path %></li>
+            </ul>
+          </li>
           <li><%= link_to "Events", events_path %></li>
           <li><%= link_to "Get Involved", get_involved_path %></li>
           <li><%= link_to "Big Red Sports", sports_path %></li>

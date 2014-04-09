@@ -46,5 +46,11 @@
     </script>
     <div class="fb-like" data-href="<%= @show.fb_page %>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
   <% end %>
+  <% if !@show.tw_page.blank? %>
+    <a href="https://twitter.com/<%= @show.tw_page %>" class="twitter-follow-button" data-show-count="false">Follow @<%= @show.tw_page %></a>
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+  <% end %>
 </div>
 

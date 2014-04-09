@@ -1,6 +1,8 @@
 <% @type = yield(:feed_type) %>
+<% @posts = Post.where("#{@type}_id = '#{params[:id]}'") %>
+<% @podcasts = Podcast.where("#{@type}_id = '#{params[:id]}'") %>
 <ol class="posts">
-  <% Post.where("#{@type}_id = '#{params[:id]}'").each do |post| %>
+  <% @posts.zip(@podcasts).flatten.compact.each do |post| %>
     <%= render post %>
   <% end %>
 </ol>

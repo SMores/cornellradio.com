@@ -1,15 +1,18 @@
 <% if params[:id] %>
   <% if params[:contoller] = :users %>
     <% @posts = Post.where(user_id: params[:id]) %>
+    <% @podcasts = Podcast.where(user_id: params[:id]) %>
   <% else %>
     <% @posts = Post.where(show_id: params[:id]) %>
+    <% @podcasts = Podcast.where(show_id: params[:id]) %>
   <% end %>
 <% else %>
   <% @posts = Post.all %>
+  <% @podcasts = Podcast.all %>
 <% end %>
 <% if @posts.any? %>
-  <h3>Posts</h3>
+  <h3>Posts &amp; Podcasts</h3>
   <ol class="posts">
-    <%= render @posts.take(5) %>
+    <%= render @posts.zip(@podcasts).flatten.compact.take(5) %>
   </ol>
 <% end %>

@@ -17,14 +17,14 @@
     <%= f.text_field :title %>
 
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "full" %>
 
     <div><strong>Links to:</strong></div>
     <%= f.label :fb_page, 'Facebook' %>
-    <%= f.text_field :fb_page %>
+    <%= f.text_field :fb_page, placeholder: "Full link to FB page" %>
 
     <%= f.label :tw_page, 'Twitter' %>
-    <%= f.text_field :tw_page %>
+    <%= f.text_field :tw_page, placeholder: "Twitter handle" %>
 
     <%= f.label :ext_page, 'External Site' %>
     <%= f.text_field :ext_page %>

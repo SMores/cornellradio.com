@@ -1,5 +1,32 @@
-<h1>New post</h1>
+<div class="box formBox">
+  <h1>New Post</h1>
+  <%= form_for @post do |f| %>
 
-<%= render 'form' %>
+    <%= render '/shared/error_messages', object: f.object %>
 
-<%= link_to 'Back', posts_path %>
+    <% if current_user.level.to_i < 2 %>
+      <%= f.label :user_id %>
+      <%= f.select :user_id, User.all.collect { |user| ["#{user.first_name} #{user.last_name}", user.id] } %>
+    <% else %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    <% end %>
+
+    <%= f.label :show_id %>
+    <% if current_user.level.to_i < 2 %>
+      <%= f.select :show_id, Show.all.collect { |show| [ show.title, show.id]}, { include_blank: true }  %>
+    <% else %>
+      <%= f.select :show_id, current_user.shows.collect { |show| [ show.title, show.id]}, { include_blank: true }  %>
+    <% end %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :blurb %>
+    <%= f.text_area :blurb, placeholder: "Generally the first few lines of your post; max 250 char"%>
+
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "full" %>
+    <br>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

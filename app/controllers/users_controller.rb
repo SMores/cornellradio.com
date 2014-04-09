@@ -28,14 +28,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      flash[:success] = "User account created"
+      redirect_to @user
+    else
+      redirect_to new_user_path
     end
   end
 
@@ -45,7 +42,7 @@ class UsersController < ApplicationController
     update_params = user_params
     if update_params[:upload]
       image_name = "dj#{@user.id}"+File.extname(update_params[:upload].original_filename)
-      save_file(update_params[:upload], image_name)
+      save_image(update_params[:upload], image_name)
       update_params[:profile_pic] = "uploaded/#{image_name}"
     end
     update_params.delete(:upload)

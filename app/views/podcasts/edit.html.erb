@@ -1,6 +1,15 @@
-<h1>Editing podcast</h1>
+<div class="box formBox">
+  <h1>New Post</h1>
+  <%= form_for @podcast do |f| %>
 
-<%= render 'form' %>
+    <%= render '/shared/error_messages', object: f.object %>
 
-<%= link_to 'Show', @podcast %> |
-<%= link_to 'Back', podcasts_path %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: "Max 250 char"%>
+    <br><br>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

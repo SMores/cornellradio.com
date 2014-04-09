@@ -24,16 +24,20 @@ class PodcastsController < ApplicationController
   # POST /podcasts
   # POST /podcasts.json
   def create
-    @podcast = Podcast.new(podcast_params)
+    new_params = podcast_params
+    if new_params[:upload]
+      audio_name = "#{new_params[:title].squish.tr(' ', '_')}"+File.extname(new_params[:upload].original_filename)
+      save_audio(new_params[:upload], audio_name)
+      new_params[:audio] = "#{audio_name}"
+    end
+    new_params.delete(:upload)
+    @podcast = Podcast.new(new_params)
 
-    respond_to do |format|
-      if @podcast.save
-        format.html { redirect_to @podcast, notice: 'Podcast was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @podcast }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @podcast.errors, status: :unprocessable_entity }
-      end
+    if @podcast.save
+      flash[:success] = "Podcast successfully created!"
+      redirect_to podcasts_path
+    else
+      redirect_to new_podcast_path
     end
   end
 
@@ -69,6 +73,6 @@ class PodcastsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def podcast_params
-      params.require(:podcast).permit(:user_id, :show_id, :title, :audio, :description)
+      params.require(:podcast).permit(:user_id, :show_id, :title, :audio, :description, :upload)
     end
 end
