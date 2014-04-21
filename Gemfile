@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-# gem 'paperclip'
-# gem 'ckeditor', '4.0.4'
+gem 'paperclip'
+gem 'ckeditor', '4.0.4'
 gem 'yaml_db'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'will_paginate', '3.0.4'
@@ -38,6 +38,11 @@ gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
+end
+
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
 end
 
 group :doc do
