@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'paperclip'
+gem 'ckeditor', '4.0.4'
 gem 'yaml_db'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'will_paginate', '3.0.4'
@@ -12,7 +14,7 @@ gem 'jquery-ui-rails'
 gem 'rails', '4.0.2'
 
 # Use mysql2 as the database for Active Record
-gem 'mysql2'
+# gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

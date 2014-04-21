@@ -38,7 +38,7 @@ module StaticPagesHelper
             row = ''.html_safe
             row << content_tag(:td) {"#{hour}:00 am"}
             (1..7).each do |day|
-              @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ?", DateTime.new(2000,01,01,hour), DateTime.new(2000,01,01,hour))
+              @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ? AND on_air = ?", DateTime.new(2000,01,01,hour), DateTime.new(2000,01,01,hour), true)
               if @show.any?
                 row << content_tag(:td, class: "show") { link_to @show[0].title, @show[0] }
               else
@@ -52,7 +52,7 @@ module StaticPagesHelper
           row = ''.html_safe
           row << content_tag(:td) {"12:00 pm"}
           (1..7).each do |day|
-            @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ?", DateTime.new(2000,01,01,12), DateTime.new(2000,01,01,12))
+            @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ? AND on_air = ?", DateTime.new(2000,01,01,12), DateTime.new(2000,01,01,12), true)
             if @show.any?
               row << content_tag(:td, class: "show") { link_to @show[0].title, @show[0] }
             else
@@ -66,7 +66,7 @@ module StaticPagesHelper
             row = ''.html_safe
             row << content_tag(:td) {"#{hour - 12}:00 pm"}
             (1..7).each do |day|
-              @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ?", DateTime.new(2000,01,01,hour), DateTime.new(2000,01,01,hour))
+              @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ? AND on_air = ?", DateTime.new(2000,01,01,hour), DateTime.new(2000,01,01,hour), true)
               if @show.any?
                 row << content_tag(:td, class: "show") { link_to @show[0].title, @show[0] }
               else
@@ -80,7 +80,7 @@ module StaticPagesHelper
           row = ''.html_safe
           row << content_tag(:td) {"12:00 pm"}
           (1..7).each do |day|
-            @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ?", DateTime.new(2000,01,01,0), DateTime.new(2000,01,01,0))
+            @show = Show.where("start_day = '#{day}' AND start_time <= ? AND end_time > ? AND on_air = ?", DateTime.new(2000,01,01,0), DateTime.new(2000,01,01,0), true)
             if @show.any?
               row << content_tag(:td, class: "show") { link_to @show[0].title, @show[0] }
             else
@@ -94,7 +94,7 @@ module StaticPagesHelper
             row = ''.html_safe
             row << content_tag(:td) {"#{hour}:00 am"}
             (1..7).each do |day|
-              @show = Show.where("start_day = '#{day + 1}' AND start_time <= ? AND end_time > ?", DateTime.new(2000,01,01,hour), DateTime.new(2000,01,01,hour))
+              @show = Show.where("start_day = '#{day + 1}' AND start_time <= ? AND end_time > ? AND on_air = ?", DateTime.new(2000,01,01,hour), DateTime.new(2000,01,01,hour), true)
               if @show.any?
                 row << content_tag(:td, class: "show") { link_to @show[0].title, @show[0] }
               else

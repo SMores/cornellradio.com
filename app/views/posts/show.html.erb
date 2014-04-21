@@ -1,6 +1,7 @@
 <% provide :title, @post.title %>
 <div class="box sideBox">
   <%= render 'shared/on_now' %>
+  <hr>
   <ol class="sideList">
     <li><%= link_to "View all posts", posts_path %></li>
     <li><%= link_to "View other posts by #{@post.user.first_name}", "/userposts/#{@post.user.id}" %></li>
@@ -18,5 +19,5 @@
   <% if current_user = @post.user || current_user.level.to_i < 2 %>
     <h4><%= link_to "edit", edit_post_path(@post) %></h4>
   <% end %>
-  <p><%= @post.content %></p>
+  <p><%= raw @post.content %></p>
 </div>

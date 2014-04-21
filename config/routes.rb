@@ -18,10 +18,12 @@ CornellRadio::Application.routes.draw do
   match '/events', to: 'static_pages#events', via: 'get'
   match '/get_involved', to: 'static_pages#get_involved', via: 'get'
   match '/sports', to: 'static_pages#sports', via: 'get'
-  match '/connect', to: 'static_pages#connnect', via: 'get'
+  match '/connect', to: 'static_pages#connect', via: 'get'
   match '/userposts/:id', to: 'static_pages#userposts', via: 'get'
   match '/showposts/:id', to: 'static_pages#showposts', via: 'get'
   match '/admin', to: 'sessions#new', via: 'get'
+
+  mount Ckeditor::Engine => '/ckeditor'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

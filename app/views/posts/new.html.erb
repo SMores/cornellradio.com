@@ -1,4 +1,5 @@
 <div class="box formBox">
+
   <h1>New Post</h1>
   <%= form_for @post do |f| %>
 
@@ -25,7 +26,7 @@
     <%= f.text_area :blurb, placeholder: "Generally the first few lines of your post; max 250 char"%>
 
     <%= f.label :content %>
-    <%= f.text_area :content, class: "full" %>
+    <%= f.text_area :content, class: "ckeditor", ckeditor: { toolbar: 'mini' } %>
     <br>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>

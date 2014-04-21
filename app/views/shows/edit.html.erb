@@ -1,6 +1,7 @@
 <% provide :title, "#{@show.title} on CornellRadio.com" %>
 <div class="box sideBox">
   <%= render 'shared/on_now' %>
+  <hr>
   <ol class="sideList">
     <li><%= link_to "Posts from #{@show.title}", "/showposts/#{@show.id}" %></li>
     <li>DJs:</li>
@@ -29,14 +30,22 @@
     <%= f.label :ext_page, 'External Site' %>
     <%= f.text_field :ext_page %>
 
-    <%= f.label :start_time %>
-    <%= f.time_field :start_time %>
-    <br>
-    <%= f.select :start_day, [['Monday', 1], ['Tuesday', 2], ['Wednesday', 3], ['Thursday', 4], ['Friday', 5], ['Saturday', 6], ['Sunday', 7]] %>
+    <% if current_user.level.to_i < 2 %>
+      <%= f.label :start_time %>
+      <%= f.time_field :start_time %>
+      <br>
+      <%= f.select :start_day, [['Monday', 1], ['Tuesday', 2], ['Wednesday', 3], ['Thursday', 4], ['Friday', 5], ['Saturday', 6], ['Sunday', 7]] %>
 
-    <%= f.label :end_time %>
-    <%= f.time_field :end_time %>
-    <br>
+      <%= f.label :end_time %>
+      <%= f.time_field :end_time %>
+      <br>
+      <%= f.label :on_air, "On air for the week?" %>
+      <%= f.radio_button :on_air, true %>
+      <span>Yes</span>
+      <%= f.radio_button :on_air, false %>
+      <span>No</span>  
+    <% end %>
+    <br><br>
     <%= f.submit "Update Show", class: "btn btn-primary" %>
   <% end %>
 </div>

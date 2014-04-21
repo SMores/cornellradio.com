@@ -1,4 +1,15 @@
-<div class="box formBox">
+<div class="box sideBox">
+  <%= render 'shared/on_now' %>
+  <hr>
+  <ol class="sideList">
+    <li><%= link_to "View all posts", posts_path %></li>
+    <li><%= link_to "View other posts by #{@post.user.first_name}", "/userposts/#{@post.user.id}" %></li>
+    <% if @post.show %>
+      <li><%= link_to "View other posts from #{@post.show.title}", "/showposts/#{@post.show.id}" %></li>
+    <% end %>
+  </ol>
+</div>
+<div class="box feedBox">
   <h1>Edit Post</h1>
   <%= form_for @post do |f| %>
 
@@ -11,7 +22,7 @@
     <%= f.text_area :blurb, placeholder: "Generally the first few lines of your post; max 250 char"%>
 
     <%= f.label :content %>
-    <%= f.text_area :content, class: "full" %>
+    <%= f.text_area :content, class: "ckeditor" %>
     <br>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>

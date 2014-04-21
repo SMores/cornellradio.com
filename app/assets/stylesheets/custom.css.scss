@@ -27,6 +27,12 @@ header {
   }
 }
 
+hr {
+  border: 0;
+  border-top: 1px solid $grayLight;
+  margin: 10px 0px;
+}
+
 .options {
   background-color: black;
   border: thin white solid;
@@ -109,7 +115,7 @@ body {
 
 .sideList {
   padding: 0;
-  border-top: 1px solid $grayLight;
+  // border-top: 1px solid $grayLight;
   padding-top: 10px;
   list-style: none;
 }
@@ -203,6 +209,7 @@ table {
     border: black thin solid;
   }
   td {
+    text-align: center;
     border: black thin solid;
   }
 }

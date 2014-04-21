@@ -1,5 +1,6 @@
 <div class="box sideBox">
   <%= render 'shared/on_now' %>
+  <hr>
   <ol class="sideList">
     <li><%= link_to "#{@user.first_name}'s Posts", "/userposts/#{@user.id}" %></li>
     <% if @user.shows.any? %>
@@ -33,6 +34,11 @@
 
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation%>
+
+    <% if current_user.level.to_i == 0 %>
+      <%= f.label :level %>
+      <%= f.select :level, [["Admin", 0], ["Manager", 1], ["DJ", 2]] %>
+    <% end %>
     <br>
     <%= f.submit "Update Profile", class: "btn btn-primary" %>
   <% end %>
