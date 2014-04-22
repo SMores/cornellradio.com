@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421191030) do
+ActiveRecord::Schema.define(version: 20140422024948) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20140421191030) do
   end
 
   create_table "show_users", force: true do |t|
-    t.string   "user_id"
-    t.string   "show_id"
+    t.integer  "user_id",    limit: 255
+    t.integer  "show_id",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
