@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422024948) do
+ActiveRecord::Schema.define(version: 20140422163628) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20140422024948) do
     t.string   "level"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.string   "bio"
+    t.text     "bio",             limit: 255
   end
 
   add_index "users", ["level"], name: "index_users_on_level"

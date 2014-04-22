@@ -4,7 +4,7 @@
 <div class="box sideBox">
   <%= render 'shared/on_now' %>
   <ol class="sideList">
-    <li><%= "#{@user.first_name} #{@user.last_name}'s profile page" %></li>
+    <li><%= link_to "#{@user.first_name} #{@user.last_name}'s profile page", @user %></li>
     <% @user.shows.each do |show| %>
       <li><%= link_to show.title, show %></li>
       <ul>
