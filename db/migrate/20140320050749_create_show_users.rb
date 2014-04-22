@@ -1,8 +1,8 @@
 class CreateShowUsers < ActiveRecord::Migration
   def change
     create_table :show_users do |t|
-      t.string :userID
-      t.string :showID
+      t.integer :userID
+      t.integer :showID
 
       t.timestamps
     end
