@@ -1,7 +1,7 @@
-class CreateShowUsers < ActiveRecord::Migration
+class CreateShowUsers < ActiveRecord::Migration 
   def change
-    create_table :show_users do |t|
-      t.integer :userID
+    create_table :show_users do |t| 
+      t.integer :userID 
       t.integer :showID
 
       t.timestamps
