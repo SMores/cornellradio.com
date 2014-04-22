@@ -18,9 +18,9 @@
   <% end %>
   <span>
     <h2><%= @show.title %></h2>
-    <% if @user == current_user || current_user.level.to_i < 2 %>
+    <% if @user == current_user || (signed_in? && current_user.level.to_i < 2) %>
       <h3><%= link_to "edit", edit_show_path(@show) %>
-        <% if current_user.level.to_i == 0 %>
+        <% if (signed_in? && current_user.level.to_i == 0) %>
             | <%= link_to "delete", @show, method: :delete, data: { confirm: "You sure?" }, title: @show.title %></h3>
         <% end %>
     <% end %>

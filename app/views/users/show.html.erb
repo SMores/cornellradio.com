@@ -23,9 +23,9 @@
     <%= image_tag("/#{@user.profile_pic}", width: 100, style: 'float:left;margin-right:10px;') %>
   <% end %>
   <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
-  <% if @user == current_user || current_user.level.to_i < 2 %>
+  <% if @user == current_user || (signed_in? && current_user.level.to_i < 2) %>
     <h3><%= link_to "edit", edit_user_path(@user) %>
-      <% if current_user.level.to_i == 0 && current_user != @user %>
+      <% if (signed_in? && current_user.level.to_i == 0) && current_user != @user %>
        | <%= link_to "delete", @user, method: :delete, data: { confirm: "You sure?" }, title: "#{@user.first_name} #{@user.last_name}" %>
     <% end %>
     </h3>

@@ -31,7 +31,7 @@
   <% if @podcast.show %>
     <h4>from <%= link_to @podcast.show.title, @podcast.show %></h4>
   <% end %>
-  <% if current_user = @podcast.user || current_user.level.to_i < 2 %>
+  <% if current_user == @podcast.user || (signed_in? && current_user.level.to_i < 2) %>
     <h4><%= link_to "edit", edit_podcast_path(@podcast) %></h4>
   <% end %>
   <p><%= @podcast.description %></p>
