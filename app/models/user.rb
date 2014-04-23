@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: { case_sensative: false }
   validates :password, length: { minimum: 6 }, if: :password_validation_required?
+  has_attached_file :profile_pic
+  validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
   default_scope order: 'users.first_name ASC'
 

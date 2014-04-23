@@ -14,7 +14,7 @@
 </div>
 <div class="box feedBox">
   <% if @show.profile_pic %>
-    <%= image_tag "/#{@show.profile_pic}", width: 100, style: "float:left; margin-right:10px;" %>
+    <%= image_tag @show.profile_pic.url, width: 100, style: "float:left; margin-right:10px;" %>
   <% end %>
   <span>
     <h2><%= @show.title %></h2>

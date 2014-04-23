@@ -47,14 +47,7 @@ class ShowsController < ApplicationController
   # PATCH/PUT /shows/1
   # PATCH/PUT /shows/1.json
   def update
-    update_params = show_params
-    if update_params[:upload]
-      image_name = "show#{@show.id}"+File.extname(update_params[:upload].original_filename)
-      save_image(update_params[:upload], image_name)
-      update_params[:profile_pic] = "uploaded/#{image_name}"
-    end
-    update_params.delete(:upload)
-    if @show.update(update_params)
+    if @show.update(show_params)
       @saved_show = Show.find_by(title: show_params[:title])
         params[:show_user].each_value do |user_id|
           puts "UserID is #{user_id} and ShowID is #{@saved_show.id}"
@@ -93,6 +86,6 @@ class ShowsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
-      params.require(:show).permit(:title, :profile_pic, :description, :fb_page, :tw_page, :ext_page, :start_time, :start_day, :end_time, :end_day, :upload, :on_air)
+      params.require(:show).permit(:title, :profile_pic, :description, :fb_page, :tw_page, :ext_page, :start_time, :start_day, :end_time, :end_day, :on_air)
     end
 end

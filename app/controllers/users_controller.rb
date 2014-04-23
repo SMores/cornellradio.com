@@ -39,18 +39,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    update_params = user_params
-    if update_params[:upload]
-      image_name = "dj#{@user.id}"+File.extname(update_params[:upload].original_filename)
-      save_image(update_params[:upload], image_name)
-      update_params[:profile_pic] = "uploaded/#{image_name}"
+    if user_params[:password] == ""
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
     end
-    update_params.delete(:upload)
-    if update_params[:password] == ""
-      update_params.delete(:password)
-      update_params.delete(:password_confirmation)
-    end
-    if @user.update(update_params)
+    if @user.update(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
     else

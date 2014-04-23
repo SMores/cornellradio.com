@@ -21,4 +21,6 @@ class Show < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   default_scope -> { order('shows.title ASC') }
+  has_attached_file :profile_pic
+  validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 end

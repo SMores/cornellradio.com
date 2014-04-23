@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk'
 gem 'paperclip'
 gem 'ckeditor', '4.0.4'
 gem 'yaml_db'

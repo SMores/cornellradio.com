@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423012954) do
+ActiveRecord::Schema.define(version: 20140423173657) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -76,8 +76,7 @@ ActiveRecord::Schema.define(version: 20140423012954) do
 
   create_table "shows", force: true do |t|
     t.string   "title"
-    t.string   "profile_pic"
-    t.text     "description", limit: 255
+    t.text     "description",              limit: 255
     t.string   "fb_page"
     t.string   "tw_page"
     t.string   "ext_page"
@@ -87,7 +86,11 @@ ActiveRecord::Schema.define(version: 20140423012954) do
     t.time     "end_time"
     t.string   "start_day"
     t.string   "end_day"
-    t.boolean  "on_air",                  default: true
+    t.boolean  "on_air",                               default: true
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
   end
 
   add_index "shows", ["title"], name: "index_shows_on_title"
@@ -96,14 +99,17 @@ ActiveRecord::Schema.define(version: 20140423012954) do
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "profile_pic"
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "level"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.text     "bio",             limit: 255
+    t.text     "bio",                      limit: 255
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
   end
 
   add_index "users", ["level"], name: "index_users_on_level"
