@@ -2,19 +2,21 @@
 <div class="box sideBox">
   <%= render 'shared/on_now' %>
 </div>
-<div class="box feedBox" style="height:650px;">
+<div class="box feedBox" style="height:850px;">
   <h1>CornellRadio.com Personalities</h1>
   <%= will_paginate %>
     <div class="col1">
       <ol class="index">
-        <%= render @users.all(limit: @users.count/2, order: :first_name) %>
+        <%= render @users.slice(0,[7,@users.length].min) %>
       </ol>
     </div>
-    <div class="col2">
-      <ol class="index">
-        <%= render @users.all(offset: @users.count/2, order: :first_name) %>
-      </ol>
-    </div>
-  <%= will_paginate %>
+    <% if @users.length > 7 %>
+      <div class="col2">
+        <ol class="index">
+          <%= render @users.slice(7,[14,@users.length].max) %>
+        </ol>
+      </div>
+      <%= will_paginate %>
+    <% end %>
 </div>
 

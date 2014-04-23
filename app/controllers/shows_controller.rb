@@ -49,12 +49,17 @@ class ShowsController < ApplicationController
   def update
     update_params = show_params
     if update_params[:upload]
-      image_name = "show#{@user.id}"+File.extname(update_params[:upload].original_filename)
+      image_name = "show#{@show.id}"+File.extname(update_params[:upload].original_filename)
       save_image(update_params[:upload], image_name)
       update_params[:profile_pic] = "uploaded/#{image_name}"
     end
     update_params.delete(:upload)
     if @show.update(update_params)
+      @saved_show = Show.find_by(title: show_params[:title])
+        params[:show_user].each_value do |user_id|
+          puts "UserID is #{user_id} and ShowID is #{@saved_show.id}"
+          ShowUser.new(user_id: user_id, show_id: @saved_show.id).save
+        end
       flash[:success] = "Show updated"
       redirect_to @show
     else

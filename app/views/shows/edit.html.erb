@@ -14,6 +14,10 @@
 </div>
 <div class="box feedBox">
   <%= form_for @show do |f| %>
+
+    <%= f.label :upload, "Upload Profile Picture" %>
+    <%= f.file_field :upload %>
+
     <%= f.label :title %>
     <%= f.text_field :title %>
 
@@ -44,6 +48,15 @@
       <span>Yes</span>
       <%= f.radio_button :on_air, false %>
       <span>No</span>  
+    <% end %>
+    <% if current_user.level.to_i < 2 %>
+      <h4>Add DJs?</h4>
+      <% (1..3).each do |d| %>
+
+        <%= label :show_user, "DJ #{d}" %>
+        <%= select :show_user, "user_id#{d}", User.all.collect { |p| [ "#{p.first_name} #{p.last_name}", p.id]}, { include_blank: true } %>
+
+      <% end %>
     <% end %>
     <br><br>
     <%= f.submit "Update Show", class: "btn btn-primary" %>
