@@ -9,7 +9,6 @@ Bundler.require(:default, Rails.env)
 module CornellRadio
   class Application < Rails::Application
 
-    config.assets.precompile += Ckeditor.assets
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
