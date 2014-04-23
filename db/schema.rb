@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422163628) do
+ActiveRecord::Schema.define(version: 20140423012954) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140422163628) do
   create_table "shows", force: true do |t|
     t.string   "title"
     t.string   "profile_pic"
-    t.string   "description"
+    t.text     "description", limit: 255
     t.string   "fb_page"
     t.string   "tw_page"
     t.string   "ext_page"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20140422163628) do
     t.time     "end_time"
     t.string   "start_day"
     t.string   "end_day"
-    t.boolean  "on_air",      default: true
+    t.boolean  "on_air",                  default: true
   end
 
   add_index "shows", ["title"], name: "index_shows_on_title"

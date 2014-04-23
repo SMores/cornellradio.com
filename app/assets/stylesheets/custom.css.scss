@@ -27,6 +27,10 @@ header {
   }
 }
 
+p {
+  font-size: 100%;
+}
+
 hr {
   border: 0;
   border-top: 1px solid $grayLight;
@@ -181,6 +185,7 @@ ol {
     &:hover {
       background-color: $errorBackground;
     }
+    max-width: 175px;
   }
   .pic {
     width: 52px;

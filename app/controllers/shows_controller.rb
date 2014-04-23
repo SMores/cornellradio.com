@@ -6,7 +6,7 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.json
   def index
-    @shows = Show.all
+    @shows = Show.paginate(page: params[:page], per_page: 14)
   end
 
   # GET /shows/1
