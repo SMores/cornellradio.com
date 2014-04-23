@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   $('#play').on('click', function() {
+    $('#audio').get(0).load();
     $('#audio').get(0).play();
     $('#play').css('display','none');
     $('#stop').css('display', 'inline');
