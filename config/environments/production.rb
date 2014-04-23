@@ -82,7 +82,7 @@ CornellRadio::Application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
-      bucket: "cornellradio-assets",
+      bucket: "cornell-radio-assets",
       access_key_id: "AKIAIB4YTLHWTO3NXLVA",
       secret_access_key: "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"
     }
