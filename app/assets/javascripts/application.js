@@ -15,6 +15,6 @@
 //= require jquery.ui.all
 //= require bootstrap
 // require turbolinks
-// require ckeditor/init
+//= require ckeditor/init
 //= require_tree .
 

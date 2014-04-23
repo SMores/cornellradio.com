@@ -1,0 +1,7 @@
+development:
+  access_key_id: "AKIAIB4YTLHWTO3NXLVA"
+  secret_access_key: "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"
+
+production:
+  access_key_id: "AKIAIB4YTLHWTO3NXLVA"
+  secret_access_key: "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"
