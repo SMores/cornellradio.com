@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :correct_access, only: [:new, :create, :destroy, :edit, :update]
+  before_action :correct_access, only: [:new, :create, :destroy]
   before_action :correct_user, only: [:edit, :update]
 
   # GET /users
