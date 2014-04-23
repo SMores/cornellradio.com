@@ -15,6 +15,9 @@
 //= require jquery.ui.all
 //= require bootstrap
 // require turbolinks
+
+var CKEDITOR_BASEPATH = '/assets/javascripts';
+
 //= require ckeditor/init
 //= require_tree .
 
