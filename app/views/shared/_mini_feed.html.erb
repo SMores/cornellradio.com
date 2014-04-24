@@ -1,11 +1,9 @@
-<% if params[:id] %>
-  <% if params[:contoller] = :users %>
-    <% @posts = Post.where(user_id: params[:id]) %>
-    <% @podcasts = Podcast.where(user_id: params[:id]) %>
-  <% else %>
-    <% @posts = Post.where(show_id: params[:id]) %>
-    <% @podcasts = Podcast.where(show_id: params[:id]) %>
-  <% end %>
+<% if params[:contoller] = :users %>
+  <% @posts = Post.where(user_id: params[:id]) %>
+  <% @podcasts = Podcast.where(user_id: params[:id]) %>
+<% elsif params[:contoller] = :users %>
+  <% @posts = Post.where(show_id: params[:id]) %>
+  <% @podcasts = Podcast.where(show_id: params[:id]) %>
 <% else %>
   <% @posts = Post.all %>
   <% @podcasts = Podcast.all %>
