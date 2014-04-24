@@ -1,7 +1,7 @@
 <li>
   <%= link_to(show) do %>
     <% if show.profile_pic %>
-      <%= image_tag "/#{show.profile_pic}", class: "pic" %>
+      <%= image_tag show.profile_pic.url, class: "pic" %>
     <% end %>
     <span class="title"><%= show.title %></span>
   <% end %>
