@@ -13,7 +13,7 @@
   </ol>
 </div>
 <div class="box feedBox">
-  <% if @show.profile_pic %>
+  <% if ! @show.profile_pic.blank? %>
     <%= image_tag @show.profile_pic.url, width: 100, style: "float:left; margin-right:10px;" %>
   <% end %>
   <span>
