@@ -1,11 +1,7 @@
 <% if params[:id] %>
-  <% if params[:contoller] == :users %>
-    <% @posts = Post.where(user_id: params[:id]) %>
-    <% @podcasts = Podcast.where(user_id: params[:id]) %>
-  <% elsif params[:contoller] == :shows%>
-    <% @posts = Post.where(show_id: params[:id]) %>
-    <% @podcasts = Podcast.where(show_id: params[:id]) %>
-  <% end %>
+  <% puts "CONTROLLER IS #{params[:controller]}" %>
+  <% @posts = Post.where("#{params[:controller].slice(0,4)}_id = #{params[:id]}") %>
+  <% @podcasts = Podcast.where("#{params[:controller].slice(0,4)}_id = #{params[:id]}") %>
 <% else %>
   <% @posts = Post.all %>
   <% @podcasts = Podcast.all %>
