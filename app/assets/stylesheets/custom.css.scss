@@ -203,6 +203,7 @@ table {
   background-color: white;
   padding: 10px;
   .show {
+    display: table-cell;
     color: white;
     text-align: center;
     background-color: $red;
