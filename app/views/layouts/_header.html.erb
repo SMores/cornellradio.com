@@ -17,10 +17,8 @@
 <% end %>
 <div>
   <span id="listen">
-    <a id="play"><%= image_tag("listenlive.png", width: "250") %></a>
-    <a id="stop" style="display:none;"><%= image_tag("stop.png", width: "250") %></a>
-    <a id="newWindow" target="_blank" onclick="pause()" href="http://widget.live365.com/widget/widget/showWidget.jsp?src=html&Widget_Server=widget.live365.com/widget/&p=cornellradio&site=web&stationBroadcaster=cornellradio&wId=136C84811D071A03FC48D3F7&mainColor=0xcc0000&txtColor=0xffffff&startPage=3&autoPlay=1&style=1&hasPurchase=1&transparent=0&bgPic=http://&codeType=0&stationTitle=Real%20Rock%20Radio:%20WVBR">
-      <p style="display: none;">Click to open stream in a new window</p>
+    <a id="play" href="#" onclick="window.open('http://apps.streamlicensing.com/player-popup.php?sid=2660&stream_id=4543','player','width=405,height=373,scrollbars=no');javascript:history.go(-1);return false;">
+      <%= image_tag("listenlive.png", width: "250") %>
     </a>
   </span>
   <div id="logo">
