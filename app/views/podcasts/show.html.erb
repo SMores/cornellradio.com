@@ -6,7 +6,7 @@
       ready: function () {
         $(this).jPlayer("setMedia", {
           title: "<%= @podcast.title %>",
-          mp3: "<%= "/audios/#{@podcast.audio}" %>",
+          mp3: "<%= @podcast.audio.url %>",
         });
       },
       cssSelectorAncestor: "#jp_container_<%= @id %>",

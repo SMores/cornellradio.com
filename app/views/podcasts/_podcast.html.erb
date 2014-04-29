@@ -3,7 +3,7 @@
   $(document).ready(function() {
     var myCirclePlayer = new CirclePlayer("#jquery_jplayer_<%= @id %>",
       {
-          mp3: "<%= "/audios/#{podcast.audio}" %>"
+          mp3: "<%= podcast.audio.url %>"
       }, {
           cssSelectorAncestor: "#cp_container_<%= @id %>",
           swfPath: "http://www.jplayer.org/latest/js/Jplayer.swf",

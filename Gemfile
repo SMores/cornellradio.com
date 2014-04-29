@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rmagick'
 gem 'aws-sdk'
-gem 'paperclip'
+gem 'paperclip', '~> 3.5.3'
 gem 'ckeditor', '4.0.4'
 gem 'yaml_db'
 gem 'bootstrap-sass', '2.3.2.0'

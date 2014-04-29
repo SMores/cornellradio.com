@@ -24,14 +24,7 @@ class PodcastsController < ApplicationController
   # POST /podcasts
   # POST /podcasts.json
   def create
-    new_params = podcast_params
-    if new_params[:upload]
-      audio_name = "#{new_params[:title].squish.tr(' ', '_')}"+File.extname(new_params[:upload].original_filename)
-      save_audio(new_params[:upload], audio_name)
-      new_params[:audio] = "#{audio_name}"
-    end
-    new_params.delete(:upload)
-    @podcast = Podcast.new(new_params)
+    @podcast = Podcast.new(podcast_params)
 
     if @podcast.save
       flash[:success] = "Podcast successfully created!"
