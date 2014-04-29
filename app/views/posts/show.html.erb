@@ -1,4 +1,12 @@
 <% provide :title, @post.title %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="box sideBox">
   <%= render 'shared/on_now' %>
   <hr>
@@ -20,4 +28,5 @@
     <h4><%= link_to "edit", edit_post_path(@post) %> | <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" }, title: @post.title %></h4>
   <% end %>
   <p><%= raw @post.content %></p>
+  <div class="fb-share-button" data-href="<%= request.original_url %>" data-type="button_count"></div>
 </div>
