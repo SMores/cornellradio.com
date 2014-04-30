@@ -4,8 +4,8 @@
 
     <%= render '/shared/error_messages', object: f.object %>
 
-    <%= link_to "Upload audio clip", new_audio_path %>
-
+    <%= link_to "Upload audio clip", new_audio_path, class:'btn' %>
+    
     <% if current_user.level.to_i < 2 %>
       <%= f.label :user_id %>
       <%= f.select :user_id, User.all.collect { |user| ["#{user.first_name} #{user.last_name}", user.id] } %>
