@@ -15,6 +15,7 @@ class PodcastsController < ApplicationController
   # GET /podcasts/new
   def new
     @podcast = Podcast.new
+    @podcast.update_attribute :key, params[:key]
   end
 
   # GET /podcasts/1/edit
@@ -27,10 +28,12 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.new(podcast_params)
 
     if @podcast.save
-      podcast = Podcast.find(@podcast.id)
-      podcast.key = params['podcast']['new_key']
-      podcast.remote_audio_url = podcast.audio.direct_fog_url(:with_path => true)
-      podcast.save!
+      Resque.enqueue(AudioProcessor, @podcast.id, @podcast.key)
+      # podcast = Podcast.find(@podcast.id)
+      # podcast.key = params['podcast']['new_key']
+      # podcast.remote_audio_url = podcast.audio.direct_fog_url(:with_path => true)
+      # podcast.save!
+      
       flash[:success] = "Podcast successfully created! Processing audio"
       redirect_to podcasts_path
     else
@@ -70,6 +73,6 @@ class PodcastsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def podcast_params
-      params.require(:podcast).permit(:user_id, :show_id, :title, :audio, :description)
+      params.require(:podcast).permit(:user_id, :show_id, :title, :audio, :description, :key)
     end
 end

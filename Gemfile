@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'resque', '~> 2.0.0.pre.1', github: 'resque/resque'
+gem 'redis'
+gem 'resque', '~> 1.22.0'
 gem 'fog', '~> 1.3.1'
 gem 'carrierwave'
-gem 'carrierwave_direct'
+gem 'carrierwave_direct', git: 'git://github.com/dwilkie/carrierwave_direct.git'
 gem 'rmagick'
 gem 'aws-sdk'
 gem 'paperclip', '~> 3.5.3'

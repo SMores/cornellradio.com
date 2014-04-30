@@ -5,7 +5,7 @@
     <%= render '/shared/error_messages', object: f.object %>
 
     <%= link_to "Upload audio clip", new_audio_path, class:'btn' %>
-    
+
     <% if current_user.level.to_i < 2 %>
       <%= f.label :user_id %>
       <%= f.select :user_id, User.all.collect { |user| ["#{user.first_name} #{user.last_name}", user.id] } %>
@@ -26,7 +26,7 @@
     <%= f.label :description %>
     <%= f.text_area :description, placeholder: "Max 250 char"%>
 
-    <%= f.hidden_field :new_key, value: params[:key] %>
+    <%= f.hidden_field :key %>
     <br><br>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>
