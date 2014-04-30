@@ -34,7 +34,7 @@
   </div>
   <%= link_to(podcast) do %>
     <span class="title"><%= podcast.title %> - <%= podcast.user.first_name %> <%= podcast.user.last_name %></span>
-    <span class="content"><%= podcast.description[0,250] %></span>
+    <span class="content"><%= podcast.description[0,160] %></span>
     <span class="timestamp">
       Posted <%= time_ago_in_words(podcast.created_at) %> ago.
     </span>
