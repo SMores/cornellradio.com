@@ -4,6 +4,7 @@ CornellRadio::Application.routes.draw do
   resources :show_users, only: [:new, :create, :destroy]
   resources :shows
   resources :podcasts
+  resources :audio, :only => :new
   resources :posts
   resources :users
 

@@ -1,0 +1,7 @@
+<div class="box formBox">
+  <%= direct_upload_form_for @uploader do |f| %>
+    <%= f.file_field :audio %>
+    <br>
+    <%= f.submit "Upload audio clip", class:"btn btn-primary" %>
+  <% end %>
+</div>

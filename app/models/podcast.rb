@@ -17,8 +17,7 @@ class Podcast < ActiveRecord::Base
   belongs_to :show
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
-  validates :audio, presence: true, length: { maximum: 250 }
+  # validates :audio, presence: true, length: { maximum: 250 }
   validates :description, presence: true, length: { maximum: 250 }
-  has_attached_file :audio
-  validates_attachment_content_type :audio, content_type: /\Aaudio\/.*\Z/
+  mount_uploader :audio, AudioUploader
 end

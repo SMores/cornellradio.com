@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429191245) do
+ActiveRecord::Schema.define(version: 20140430042028) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -43,10 +43,7 @@ ActiveRecord::Schema.define(version: 20140429191245) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "audio_file_name"
-    t.string   "audio_content_type"
-    t.integer  "audio_file_size"
-    t.datetime "audio_updated_at"
+    t.string   "audio"
   end
 
   add_index "podcasts", ["user_id", "show_id", "created_at"], name: "index_podcasts_on_user_id_and_show_id_and_created_at"
