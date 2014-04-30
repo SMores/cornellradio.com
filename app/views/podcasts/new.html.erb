@@ -1,10 +1,10 @@
 <div class="box formBox">
-  <h1>New Post</h1>
+  <h1>New Podcast</h1>
   <%= form_for @podcast do |f| %>
 
     <%= render '/shared/error_messages', object: f.object %>
 
-    <%= link_to "Upload audio clip", new_audio_path, class:'btn' %>
+    <% #link_to "Upload audio clip", new_audio_path, class:'btn' %>
 
     <% if current_user.level.to_i < 2 %>
       <%= f.label :user_id %>
@@ -28,6 +28,6 @@
 
     <%= f.hidden_field :key %>
     <br><br>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit value:"Upload Podcast", class: "btn btn-primary" %>
   <% end %>
 </div>
