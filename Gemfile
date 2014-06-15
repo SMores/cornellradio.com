@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'redis'
-gem 'resque', '~> 1.22.0'
+# gem 'resque', '~> 1.22.0'
 gem 'fog', '~> 1.3.1'
 gem 'carrierwave'
 gem 'carrierwave_direct', git: 'git://github.com/dwilkie/carrierwave_direct.git'
