@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'redis'
+# gem 'redis'
 # gem 'resque', '~> 1.22.0'
 gem 'fog', '~> 1.3.1'
 gem 'carrierwave'
