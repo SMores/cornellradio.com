@@ -32,7 +32,6 @@ class ShowsController < ApplicationController
       if @show.save
         @saved_show = Show.find_by(title: show_params[:title])
         params[:show_user].each_value do |user_id|
-          puts "UserID is #{user_id} and ShowID is #{@saved_show.id}"
           ShowUser.new(user_id: user_id, show_id: @saved_show.id).save
         end
         format.html { redirect_to @show, notice: 'Show was successfully created.' }
