@@ -12,7 +12,9 @@
   <hr>
   <ol class="sideList">
     <li><%= link_to "View all posts", posts_path %></li>
-    <li><%= link_to "View other posts by #{@post.user.first_name}", "/userposts/#{@post.user.id}" %></li>
+    <% unless @post.user.nil? %>
+      <li><%= link_to "View other posts by #{@post.user.first_name}", "/userposts/#{@post.user.id}" %></li>
+    <% end %>
     <% if @post.show %>
       <li><%= link_to "View other posts from #{@post.show.title}", "/showposts/#{@post.show.id}" %></li>
     <% end %>
@@ -20,7 +22,9 @@
 </div>
 <div class="box feedBox">
   <h2><%= @post.title %></h2>
-  <h3>by <%= link_to @post.user.first_name, @post.user %></h3>
+  <% unless @post.user.nil? %>
+    <h3>by <%= link_to @post.user.first_name, @post.user %></h3>
+  <% end %>
   <% if @post.show %>
     <h4>from <%= link_to @post.show.title, @post.show %></h4>
   <% end %>
