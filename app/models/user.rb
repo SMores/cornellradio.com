@@ -18,7 +18,8 @@
 
 class User < ActiveRecord::Base
   has_many :show_users, foreign_key: "user_id", dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_many :posts
+  has_many :podcasts
   has_many :shows, through: :show_users
   has_secure_password
   before_save { email.downcase! }
