@@ -19,7 +19,9 @@
   <%= render 'shared/on_now' %>
   <ol class="sideList">
     <li><%= link_to "View all posts", posts_path %></li>
-    <li><%= link_to "View other posts by #{@podcast.user.first_name}", "/userposts/#{@podcast.user.id}" %></li>
+    <% unless @podcast.user.nil? %>
+      <li><%= link_to "View other posts by #{@podcast.user.first_name}", "/userposts/#{@podcast.user.id}" %></li>
+    <% end %>
     <% if @podcast.show %>
       <li><%= link_to "View other posts from #{@podcast.show.title}", "/showposts/#{@podcast.show.id}" %></li>
     <% end %>
@@ -27,7 +29,9 @@
 </div>
 <div class="box feedBox">
   <h2><%= @podcast.title %></h2>
-  <h3>by <%= link_to @podcast.user.first_name, @podcast.user %></h3>
+  <% unless @podcast.user.nil? %>
+    <h3>by <%= link_to @podcast.user.first_name, @podcast.user %></h3>
+  <% end %>
   <% if @podcast.show %>
     <h4>from <%= link_to @podcast.show.title, @podcast.show %></h4>
   <% end %>
