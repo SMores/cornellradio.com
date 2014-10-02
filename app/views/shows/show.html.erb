@@ -18,6 +18,7 @@
   <% end %>
   <span>
     <h2><%= @show.title %></h2>
+    <h3><%= "#{Date::DAYNAMES[@show.start_day.to_i]}s, #{@show.start_time.strftime("%l:%M%P")} - #{@show.end_time.strftime("%l:%M%P")}" %></h3>
     <% if @user == current_user || (signed_in? && current_user.level.to_i < 2) %>
       <h3>
         <%= link_to "edit", edit_show_path(@show) %>
