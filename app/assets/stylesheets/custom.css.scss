@@ -19,21 +19,29 @@ header {
   border-width: thin;
   border-radius: 10px;
   height: 144px;
-  padding: 15px;
+  // padding: 15px;
   font-size: 300%;
   #listen {
+    margin-top: 10px;
+    margin-left: 15px;
     float: left;
   }
-  a.listen-alts {
+  .listen-alts {
+    background-color: rgba(0,0,0,0.6);
+    padding: 6px;
     display: block;
-    font-size: 50%;
+    font-size: 35%;
     margin-left: 20px;
     color: white;
     text-shadow: 2px 2px black;
+    a:hover {
+      color: white;
+    }
   }
   #logo {
+    margin-top:15px;
     float: right;
-    margin-right: 10px;
+    margin-right: 25px;
   }
 }
 
