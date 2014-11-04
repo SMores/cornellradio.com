@@ -31,8 +31,8 @@ CornellRadio::Application.configure do
     storage: :s3,
     s3_credentials: {
       bucket: "cornell-radio-assets",
-      access_key_id: "AKIAIB4YTLHWTO3NXLVA",
-      secret_access_key: "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"
+      access_key_id: ENV['AWS_PUBLIC'],
+      secret_access_key: ENV["AWS_SECRET"]
     }
   }
 end
