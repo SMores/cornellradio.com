@@ -38,7 +38,9 @@
          - <%= podcast.user.first_name %> <%= podcast.user.last_name %>
       <% end %>
     </span>
-    <span class="content"><%= podcast.description[0,160] %></span>
+    <% if !podcast.description.nil? %>
+      <span class="content"><%= podcast.description[0,160] %></span>
+    <% end %>
     <span class="timestamp">
       Posted <%= time_ago_in_words(podcast.created_at) %> ago.
     </span>
