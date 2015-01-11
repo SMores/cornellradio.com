@@ -1,11 +1,3 @@
-<% if params[:id] %>
-  <% puts "CONTROLLER IS #{params[:controller]}" %>
-  <% @posts = Post.where("#{params[:controller].slice(0,4)}_id = #{params[:id]}") %>
-  <% @podcasts = Podcast.where("#{params[:controller].slice(0,4)}_id = #{params[:id]}") %>
-<% else %>
-  <% @posts = Post.all %>
-  <% @podcasts = Podcast.all %>
-<% end %>
 <% if @posts.any? %>
   <h3>Posts &amp; Podcasts</h3>
   <ol class="posts">

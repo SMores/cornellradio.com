@@ -12,6 +12,8 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+    @posts = @show.posts
+    @podcasts = @show.podcasts
   end
 
   # GET /shows/new

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430042028) do
+ActiveRecord::Schema.define(version: 20150110234436) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -91,8 +91,10 @@ ActiveRecord::Schema.define(version: 20140430042028) do
     t.string   "profile_pic_content_type"
     t.integer  "profile_pic_file_size"
     t.datetime "profile_pic_updated_at"
+    t.string   "slug"
   end
 
+  add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true
   add_index "shows", ["title"], name: "index_shows_on_title"
 
   create_table "users", force: true do |t|
@@ -110,8 +112,10 @@ ActiveRecord::Schema.define(version: 20140430042028) do
     t.string   "profile_pic_content_type"
     t.integer  "profile_pic_file_size"
     t.datetime "profile_pic_updated_at"
+    t.string   "slug"
   end
 
   add_index "users", ["level"], name: "index_users_on_level"
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true
 
 end

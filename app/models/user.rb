@@ -17,6 +17,10 @@
 #
 
 class User < ActiveRecord::Base
+  extend FriendlyId
+  scope :active, -> {where(active: true)}
+  friendly_id :slug_name, use: [:slugged, :finders]
+
   has_many :show_users, foreign_key: "user_id", dependent: :destroy
   has_many :posts
   has_many :podcasts
@@ -32,6 +36,10 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
   default_scope order: 'users.first_name ASC'
+
+  def slug_name
+    "#{first_name} #{last_name}"
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

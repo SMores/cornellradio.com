@@ -15,6 +15,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'annotate'
 gem 'jquery-ui-rails'
+gem 'friendly_id', '~> 5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
