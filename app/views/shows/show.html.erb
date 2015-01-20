@@ -59,5 +59,6 @@
   <% if !@show.ext_page.blank? %>
     <a href="<%= @show.ext_page %>"></a>
   <% end %>
+  <%= render partial: 'shared/show_subscribe_form', locals: {show: @show} %>
 </div>
 

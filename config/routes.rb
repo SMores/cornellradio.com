@@ -12,8 +12,6 @@ CornellRadio::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/schedule', to: 'static_pages#schedule', via: 'get'
-  match '/shows', to: 'static_pages#shows', via: 'get'
-  match '/personalities', to: 'static_pages#personalities', via: 'get'
   match '/media', to: 'static_pages#media', via: 'get'
   match '/win', to: 'static_pages#win', via: 'get'
   match '/events', to: 'static_pages#events', via: 'get'
@@ -23,6 +21,7 @@ CornellRadio::Application.routes.draw do
   match '/userposts/:id', to: 'static_pages#userposts', via: 'get'
   match '/showposts/:id', to: 'static_pages#showposts', via: 'get'
   match '/admin', to: 'sessions#new', via: 'get'
+  match '/subscribe', to: 'mailchimp#subscribe', via: 'post'
 
   mount Ckeditor::Engine => '/ckeditor'
 

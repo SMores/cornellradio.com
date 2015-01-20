@@ -22,15 +22,17 @@
 </div>
 <div class="box feedBox">
   <h2><%= @post.title %></h2>
-  <% unless @post.user.nil? %>
-    <h3>by <%= link_to @post.user.first_name, @post.user %></h3>
-  <% end %>
   <% if @post.show %>
     <h4>from <%= link_to @post.show.title, @post.show %></h4>
   <% end %>
-  <% if current_user == @post.user || (signed_in? && current_user.level.to_i < 2) %>
-    <h4><%= link_to "edit", edit_post_path(@post) %> | <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" }, title: @post.title %></h4>
+  <% unless @post.user.nil? %>
+    <h3>by <%= link_to @post.user.first_name, @post.user %></h3>
+    <% if current_user == @post.user || (signed_in? && current_user.level.to_i < 2) %>
+      <h4><%= link_to "edit", edit_post_path(@post) %> | <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" }, title: @post.title %></h4>
+    <% end %>
   <% end %>
   <p><%= raw @post.content %></p>
   <div class="fb-share-button" data-href="<%= request.original_url %>" data-type="button_count"></div>
+  <%= render(partial: 'shared/user_subscribe_form', locals: {user: @post.user}) if @post.user %>
+  <%= render(partial: 'shared/show_subscribe_form', locals: {show: @post.show}) if @post.show %>
 </div>

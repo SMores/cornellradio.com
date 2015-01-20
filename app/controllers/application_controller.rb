@@ -4,4 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   include ApplicationHelper
+  before_action :set_mailchimp
+
+  def set_mailchimp
+    @mailchimp = Mailchimp::API.new(MC_API_KEY)
+  end
 end

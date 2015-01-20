@@ -15,4 +15,5 @@
 <div class="box feedBox">
   <h2><%= "Posts from #{@show.title}" %></h2>
   <%= render 'shared/selective_feed' %>
+  <%= render partial: 'shared/show_subscribe_form', locals: {show: @show} %>
 </div>

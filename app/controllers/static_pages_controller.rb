@@ -12,12 +12,6 @@ class StaticPagesController < ApplicationController
     # render layout: 'bare'
   end
 
-  def shows
-  end
-
-  def personalities
-  end
-
   def media
     @posts = Post.all(order: :created_at, limit: 10)
     @podcasts = Podcast.all(order: :created_at, limit: 10)

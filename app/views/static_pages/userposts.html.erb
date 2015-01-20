@@ -20,4 +20,5 @@
 <div class="box feedBox">
   <h2><%= "#{@user.first_name} #{@user.last_name}'s Posts" %></h2>
   <%= render 'shared/selective_feed' %>
+  <%= render(partial: 'shared/user_subscribe_form', locals: {user: @user}) %>
 </div>

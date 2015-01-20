@@ -36,6 +36,7 @@ class ShowsController < ApplicationController
         params[:show_user].each_value do |user_id|
           ShowUser.new(user_id: user_id, show_id: @saved_show.id).save
         end
+        @mailchimp.lists.interest_group_add(MC_LIST_ID, @show.title)
         format.html { redirect_to @show, notice: 'Show was successfully created.' }
         format.json { render action: 'show', status: :created, location: @show }
       else

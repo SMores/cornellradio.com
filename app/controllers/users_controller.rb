@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = "User account created"
+      @mailchimp.lists.interest_group_add(MC_LIST_ID, @user.full_name)
       redirect_to @user
     else
       redirect_to new_user_path

@@ -19,7 +19,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   scope :active, -> {where(active: true)}
-  friendly_id :slug_name, use: [:slugged, :finders]
+  friendly_id :full_name, use: [:slugged, :finders]
 
   has_many :show_users, foreign_key: "user_id", dependent: :destroy
   has_many :posts
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 
   default_scope order: 'users.first_name ASC'
 
-  def slug_name
+  def full_name
     "#{first_name} #{last_name}"
   end
 
@@ -47,11 +47,6 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  def User.save(upload, name)
-    path = Rails.root.join('public', 'uploaded', name)
-    File.open(path, "wb") { |f| f.write(upload.read) }
   end
 
   def password_validation_required?
