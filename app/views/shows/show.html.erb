@@ -37,26 +37,17 @@
   </span>
   <p><%= @show.description %></p>
   <%= render 'shared/mini_feed' %>
-  <% if !@show.fb_page.blank? %>
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+  <% unless @show.fb_page.blank? %>
+    <%= render 'shared/javascript_sdk' %>
     <div class="fb-like" data-href="<%= @show.fb_page %>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
   <% end %>
-  <% if !@show.tw_page.blank? %>
+  <% unless @show.tw_page.blank? %>
     <a href="https://twitter.com/<%= @show.tw_page %>" class="twitter-follow-button" data-show-count="false">Follow @<%= @show.tw_page %></a>
     <script>
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     </script>
   <% end %>
-  <% if !@show.ext_page.blank? %>
+  <% unless @show.ext_page.blank? %>
     <a href="<%= @show.ext_page %>"></a>
   <% end %>
   <%= render partial: 'shared/show_subscribe_form', locals: {show: @show} %>
