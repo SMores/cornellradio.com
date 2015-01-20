@@ -1,16 +1,34 @@
+<%= render 'shared/javascript_sdk' %>
 <% provide :title, "Connect to CornellRadio.com" %>
 <div class="box sideBox">
   <%= render 'shared/on_now' %>
 </div>
 <div class="box feedBox">
   <h1>Get in touch!</h1>
-  <p>
-    If you would like to get involved with <strong>CornellRadio.com</strong>, or have any questions or comments, please email us at <strong><a href="mailto:launch@cornellradio.org">launch@cornellradio.org</a></strong></p>
-  <p>If you would like to make a request, please reach out through our social media accounts:</p>
-  <ul>
-    <li><em><a href="https://www.facebook.com/CornellRadio">Facebook</a></em></li>
-      <li><em><a href="https://twitter.com/CornellRadio">Twitter</a></em></li>
-      <li><em><a href="#">YouTube</a></em></li>
-      <!--<li><em><a href="#">Instagram</a></em></li>-->
+
+  <h3>Email Us</h3>
+  <a href="mailto:launch@cornellradio">
+    <email>launch@cornellradio.com</email>
+  </a>
+
+  <h3>Make a Request</h3>
+  <phone>607-273-6397</phone>
+
+  <h3>Connect</h3>
+  <ul class="connect-list">
+    <li><iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:cornellradio&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe></li>
+    <li><div class="fb-like" data-href="https://www.facebook.com/CornellRadio" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
+    <li><a href="https://twitter.com/cornellradio %>"
+     class="twitter-follow-button"
+     data-show-count="false">
+     Follow @CornellRadio
+    </a></li>
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
   </ul>
+
+  <h3>Sales</h3>
+  <p><b>CornellRadio.com</b> is created ‘For the Hill, From the Hill.’ It’s the best way to guarantee your ads are being heard over the air or seen on our website by Cornell students. <b>We offer on-air advertisement production</b> and can make sure your organization reaches its audience. Contact Dustin Patte at <a href="dustin@wvbr.com"><b>Dustin@wvbr.com</b></a> or by calling the station at <phone>607-273-6397</phone>.</p>
+
 </div>

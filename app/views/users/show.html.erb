@@ -19,7 +19,7 @@
   </ol>
 </div>
 <div class="box feedBox">
-  <% if ! @user.profile_pic.blank? %>
+  <% unless @user.profile_pic.blank? %>
     <%= image_tag(@user.profile_pic.url, width: 100, style: 'float:left;margin-right:10px;') %>
   <% end %>
   <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
