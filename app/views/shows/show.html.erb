@@ -48,7 +48,9 @@
     </script>
   <% end %>
   <% unless @show.ext_page.blank? %>
-    <a href="<%= @show.ext_page %>"></a>
+    <div>
+      <a href="<%= @show.ext_page %>">@show.ext_page</a>
+    </div>
   <% end %>
 </div>
 
