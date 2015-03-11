@@ -101,6 +101,20 @@ body {
   }
 }
 
+.rss {
+  border: medium gray solid;
+  padding: 10px;
+  ul {
+    height: 250px;
+    margin: 0;
+    list-style: none;
+    overflow: scroll;
+    li {
+      border-bottom: thin solid gray;
+    }
+  }
+}
+
 .box {
   border: thin $grayDark solid;
   box-shadow: 1px 1px 3px $grayDark;

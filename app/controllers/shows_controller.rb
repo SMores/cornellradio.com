@@ -1,3 +1,7 @@
+require 'rubygems'
+require 'simple-rss'
+require 'open-uri'
+
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
   before_action :correct_access, only: [:destroy, :create, :new, :edit, :update]
@@ -12,6 +16,7 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+    @rss = SimpleRSS.parse open(@show.rss) unless @show.rss.nil?
     @posts = @show.posts
     @podcasts = @show.podcasts
   end
@@ -87,6 +92,6 @@ class ShowsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
-      params.require(:show).permit(:title, :profile_pic, :description, :fb_page, :tw_page, :ext_page, :start_time, :start_day, :end_time, :end_day, :on_air)
+      params.require(:show).permit(:title, :profile_pic, :description, :fb_page, :tw_page, :ext_page, :rss)
     end
 end

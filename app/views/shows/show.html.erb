@@ -52,5 +52,19 @@
       <a href="<%= @show.ext_page %>"><%= @show.ext_page %></a>
     </div>
   <% end %>
+  <% unless @show.rss.blank? %>
+    <% @first =  @rss.channel.items.first%>
+    <p>RSS feed</p>
+    <div class="rss">
+      <ul>
+        <% @rss.channel.items.each do |item| %>
+          <li>
+            <h4><%= link_to item.title, item.link %></h4>
+            <%= raw item.description %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
 

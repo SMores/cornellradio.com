@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110234436) do
+ActiveRecord::Schema.define(version: 20150311034816) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -82,16 +82,16 @@ ActiveRecord::Schema.define(version: 20150110234436) do
     t.string   "ext_page"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.string   "start_day"
-    t.string   "end_day"
-    t.boolean  "on_air",                               default: true
     t.string   "profile_pic_file_name"
     t.string   "profile_pic_content_type"
     t.integer  "profile_pic_file_size"
     t.datetime "profile_pic_updated_at"
     t.string   "slug"
+    t.string   "rss"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "start_day"
+    t.string   "end_day"
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true

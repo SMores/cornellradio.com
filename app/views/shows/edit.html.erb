@@ -34,6 +34,9 @@
     <%= f.label :ext_page, 'External Site' %>
     <%= f.text_field :ext_page %>
 
+    <%= f.label :rss, 'RSS Feed' %>
+    <%= f.text_field :rss %>
+
     <% if current_user.level.to_i < 2 %>
       <%= f.label :start_time %>
       <%= f.time_field :start_time %>
@@ -43,11 +46,6 @@
       <%= f.label :end_time %>
       <%= f.time_field :end_time %>
       <br>
-      <%= f.label :on_air, "On air for the week?" %>
-      <%= f.radio_button :on_air, true %>
-      <span>Yes</span>
-      <%= f.radio_button :on_air, false %>
-      <span>No</span>  
     <% end %>
     <% if current_user.level.to_i < 2 %>
       <h4>Add DJs?</h4>
