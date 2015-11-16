@@ -16,7 +16,7 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
-    @rss = SimpleRSS.parse open(@show.rss) unless @show.rss.nil?
+    @rss = SimpleRSS.parse open(@show.rss) unless @show.rss.nil? or @show.rss.empty?
     @posts = @show.posts
     @podcasts = @show.podcasts
   end
